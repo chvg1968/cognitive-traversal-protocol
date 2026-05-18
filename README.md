@@ -46,6 +46,16 @@ CTP does not improve the underlying LLM. It improves the **governance layer** be
 
 ---
 
+## Origin
+
+This protocol started with a short video about Peano curves, Koch snowflakes, and Hausdorff dimensions — the idea that a line can be folded infinitely to fill a plane, and that nature builds efficient systems through hierarchical self-similarity. That sparked a question: can a repository be "folded" so an LLM ingests, understands, and modifies it without losing structural awareness?
+
+The literal answer is no — tokenizers already linearize code, and the real problem is not linearization but preserving hierarchy through it. The intuition still translated into something operational: **apply the same cognitive pattern at every scale of the system.** Observe, compress, consolidate, advance — at the function level, the file level, the module level, the service level. A small repo runs the same pattern, fewer times.
+
+CTP is the engineering form of that intuition. The fractal framing is the spark, not the proof. The protocol stands on its own operational merits, described in the rest of this document.
+
+---
+
 ## Quick start
 
 Paste this in any LLM session:
