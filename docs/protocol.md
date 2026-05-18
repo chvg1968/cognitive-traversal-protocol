@@ -100,6 +100,31 @@ TRIAGE:
   rationale: "why this scope is enough"
 ```
 
+## Depth Decision
+
+CTP does not reward reading everything. It rewards reading the minimum needed to protect real contracts.
+
+| Situation | Read first | Do not |
+| --- | --- | --- |
+| Small visual or narrative change | Affected artifact, style guide, channel constraints | Audit unrelated areas |
+| Error with direct evidence | Error message, indicated file or log, minimal reproduction | Infer cause from names or assumptions |
+| Contract, promise, or interface change | Current definition, consumers, examples, tests, validators | Edit only the provider of the change |
+| Data, identity, permissions, or compliance | Data model, access rules, authority sources, critical history | Continue with critical open questions |
+| Cross-cutting restructure | Inputs, outputs, shared modules, invariants, quality criteria | Mix cleanup with hidden behavior changes |
+
+**Heuristic:** if a conclusion appears only in a secondary source (wiki, ticket, note), it is a hint. If it appears in the current artifact, tests, data, configuration, or authoritative documentation, it can enter the anchor. If it appears nowhere verifiable, it remains an open question.
+
+**Reading budget:** cap reading at the smaller of 15 sources or 3,000 lines per section. Sample representative artifacts — entry points, contracts, schemas, interfaces — and record what was sampled vs. skipped intentionally.
+
+## Section Model
+
+Each section of a traversal runs four sub-steps in order:
+
+1. **Observe** — read only what is needed to characterize the section.
+2. **Compress** — turn reading into an anchor: invariants, dependencies, risks, contradictions, open questions.
+3. **Consolidate** — cross-check against prior anchors. A critical conflict stops the work until resolved.
+4. **Advance** — proceed to the next section using the anchor, not a re-derived intuition.
+
 ## Anchor Format
 
 ```yaml
@@ -154,6 +179,23 @@ IMPACT_MAP:
 
 If `unknown` contains anything, do not intervene.
 
+## Intervention Principles
+
+The correct intervention is the smallest change that satisfies the task and respects the consolidated anchors.
+
+- **Preserve contracts** — do not change signatures, schemas, routes, permissions, or public semantics as a side effect. If you must, declare it as a direct change in the IMPACT_MAP.
+- **Respect the local pattern** — use existing patterns from the system before inventing abstractions. Coherence is worth more than novelty.
+- **Do not hide uncertainty** — if an unexpected dependency appears during intervention, pause and update the IMPACT_MAP. Do not keep acting with unresolved impact.
+- **Separate refactor from behavior** — avoid mixing structural cleanup with changes in meaning. If they must mix, explain why it was necessary.
+
+**Operational close checklist:**
+
+1. The change matches the declared scope.
+2. No unknowns remain in the IMPACT_MAP.
+3. Critical invariants remain intact.
+4. Dependencies still point in the same direction.
+5. The solution adds no complexity without a clear benefit.
+
 ## Post-Modification Check
 
 After intervention, the agent should verify:
@@ -164,6 +206,15 @@ After intervention, the agent should verify:
 4. The change did not mutate unrelated contracts.
 5. Verification was run or limitations were clearly stated.
 6. Remaining risks were reported.
+
+**Verification by change type:**
+
+| Change type | Minimum verification | Report if missing |
+| --- | --- | --- |
+| Document or static page | Structure inspection, full read-through, internal links | No viewer or validator available |
+| Application or automation | Lint, typecheck, relevant tests, local run if applicable | Dependencies not installed, blocked environment |
+| Contract, API, or integration | Expected input/output, consumers, errors, compatibility | External services unavailable |
+| Data, models, or business rules | Verifiable sample, rollback, compatibility with current source | Data source inaccessible or insufficient sample |
 
 ## Final Report Shape
 
