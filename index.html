@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -434,10 +434,10 @@
         <h1>Cognitive Traversal Protocol</h1>
         <p class="hero-note">A community protocol for context-first LLM intervention</p>
         <p class="lead">
-          Un LLM no debe saltar directo a intervenir. Primero reduce incertidumbre,
-          conserva invariantes, declara impacto y solo entonces cambia el artefacto.
-          CTP convierte esa disciplina en una rutina ejecutable: leer poco,
-          entender bien, modificar minimo y verificar en contexto.
+          An LLM should not jump straight into intervention. First it reduces
+          uncertainty, preserves invariants, declares impact, and only then changes
+          the artifact. CTP turns that discipline into an executable routine: read
+          less, understand better, change minimally, and verify in context.
         </p>
 
         <div class="actions" aria-label="Project links">
@@ -446,38 +446,38 @@
           <a class="button" href="docs/examples.md">Examples</a>
         </div>
 
-        <nav class="toc" aria-label="Secciones principales">
-          <a href="#arranque">Arranque obligatorio</a>
-          <a href="#decision">Decision de profundidad</a>
-          <a href="#anchors">Anchors de memoria</a>
-          <a href="#impacto">Mapa de impacto</a>
-          <a href="#modificar">Intervenir sin drift</a>
-          <a href="#verificar">Cierre verificable</a>
+        <nav class="toc" aria-label="Main sections">
+          <a href="#arranque">Mandatory start</a>
+          <a href="#decision">Depth decision</a>
+          <a href="#anchors">Memory anchors</a>
+          <a href="#impacto">Impact map</a>
+          <a href="#modificar">Intervene without drift</a>
+          <a href="#verificar">Verifiable close</a>
         </nav>
       </div>
 
-      <aside class="hero-panel" aria-label="Regla principal">
-        <strong>Regla de oro</strong>
+      <aside class="hero-panel" aria-label="Main rule">
+        <strong>Golden rule</strong>
         <p>
-          Si no puedes nombrar que cambia, que depende de ello y que sigue sin
-          saberse, no estas listo para intervenir.
+          If you cannot name what changes, what depends on it, and what remains
+          unknown, you are not ready to intervene.
         </p>
         <div class="tag-row">
-          <span class="tag">TRIAGE primero</span>
-          <span class="tag">Anchors antes de avanzar</span>
-          <span class="tag">Unknown bloquea</span>
-          <span class="tag">La fuente vigente manda</span>
+          <span class="tag">TRIAGE first</span>
+          <span class="tag">Anchors before advance</span>
+          <span class="tag">Unknown blocks</span>
+          <span class="tag">Current source wins</span>
         </div>
       </aside>
     </header>
 
     <section class="section" id="arranque">
       <div class="section-intro">
-        <p class="kicker">01 / Orientacion</p>
-        <h2>Arranque obligatorio</h2>
+        <p class="kicker">01 / Orientation</p>
+        <h2>Mandatory start</h2>
         <p>
-          El primer trabajo del LLM es fijar alcance. No es resolver: es
-          decidir cuanto contexto hace falta para actuar sin romper.
+          The LLM's first job is to set scope. It is not solving yet: it is
+          deciding how much context is required to act without breaking things.
         </p>
       </div>
 
@@ -485,12 +485,12 @@
         <div class="rule">
           <span class="number">1</span>
           <div>
-            <h3>Lee instrucciones de mayor autoridad</h3>
+            <h3>Read the highest-authority instructions</h3>
             <p>
-              Prioriza instrucciones de sistema, reglas del entorno, brief del
-              usuario, documentacion local y comentarios cercanos al artefacto.
-              Si hay conflicto, registra la contradiccion y sigue el orden de
-              autoridad aplicable.
+              Prioritize system instructions, environment rules, the user's brief,
+              local documentation, and comments close to the artifact. If there is
+              a conflict, record the contradiction and follow the applicable
+              authority order.
             </p>
           </div>
         </div>
@@ -498,42 +498,42 @@
         <div class="rule">
           <span class="number">2</span>
           <div>
-            <h3>Usa referencias externas solo como mapa</h3>
+            <h3>Use external references only as a map</h3>
             <p>
-              Wikis, docs, tickets, notas o conversaciones ayudan a saber donde
-              mirar. Nunca prueban por si solos lo que existe hoy. Todo dato,
-              regla, contrato, ruta, funcion, metrica o flujo debe verificarse
-              en la fuente vigente antes de reportarse como hecho.
+              Wikis, docs, tickets, notes, and conversations help decide where to
+              look. They never prove what exists today. Every datum, rule,
+              contract, route, function, metric, or flow must be verified in the
+              current source before being reported as fact.
             </p>
           </div>
         </div>
 
         <div class="template">
-          <span class="status must">Primer bloque formal</span>
+          <span class="status must">First formal block</span>
           <pre><code>TRIAGE:
   context_size: small | medium | large
   complexity: low | medium | high
-  stack: [lenguajes, frameworks, herramientas o tipos de artefacto]
-  core_purpose: "una frase verificable"
+  stack: [languages, frameworks, tools, or artifact types]
+  core_purpose: "one verifiable sentence"
   task_scope: narrow | broad | full-audit
   external_refs_consulted: yes | no
-  external_refs_sampled: [fuentes] | []
+  external_refs_sampled: [sources] | []
   external_refs_confidence: low | medium | high
   source_verification_required: yes | no
   required_sections: ["identity", "domain", "quality"]
-  estimated_sources_to_read: numero
-  rationale: "por que este alcance es suficiente"</code></pre>
+  estimated_sources_to_read: number
+  rationale: "why this scope is enough"</code></pre>
         </div>
       </div>
     </section>
 
     <section class="section" id="decision">
       <div class="section-intro">
-        <p class="kicker">02 / Profundidad</p>
-        <h2>Decision de profundidad</h2>
+        <p class="kicker">02 / Depth</p>
+        <h2>Depth decision</h2>
         <p>
-          El CTP no premia leer todo. Premia leer lo minimo que permite proteger
-          contratos reales.
+          CTP does not reward reading everything. It rewards reading the minimum
+          needed to protect real contracts.
         </p>
       </div>
 
@@ -542,58 +542,58 @@
           <table>
             <thead>
               <tr>
-                <th>Situacion</th>
-                <th>Lee primero</th>
-                <th>No hagas</th>
+                <th>Situation</th>
+                <th>Read first</th>
+                <th>Do not</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Cambio visual o narrativo puntual</td>
-                <td>Artefacto afectado, guia de estilo, restricciones del canal</td>
-                <td>Auditoria completa de areas no relacionadas</td>
+                <td>Small visual or narrative change</td>
+                <td>Affected artifact, style guide, channel constraints</td>
+                <td>Audit unrelated areas</td>
               </tr>
               <tr>
-                <td>Error con evidencia directa</td>
-                <td>Mensaje de error, archivo o registro senalado, reproduccion minima</td>
-                <td>Inferir causa desde nombres o suposiciones</td>
+                <td>Error with direct evidence</td>
+                <td>Error message, indicated file or log, minimal reproduction</td>
+                <td>Infer cause from names or assumptions</td>
               </tr>
               <tr>
-                <td>Cambio de contrato, promesa o interfaz</td>
-                <td>Definicion vigente, consumidores, ejemplos, pruebas o validadores</td>
-                <td>Editar solo el proveedor del cambio</td>
+                <td>Contract, promise, or interface change</td>
+                <td>Current definition, consumers, examples, tests, or validators</td>
+                <td>Edit only the provider of the change</td>
               </tr>
               <tr>
-                <td>Datos, identidad, permisos o cumplimiento</td>
-                <td>Modelo de datos, reglas de acceso, fuentes de autoridad, historial critico</td>
-                <td>Continuar con preguntas abiertas criticas</td>
+                <td>Data, identity, permissions, or compliance</td>
+                <td>Data model, access rules, authority sources, critical history</td>
+                <td>Continue with critical open questions</td>
               </tr>
               <tr>
-                <td>Reestructura transversal</td>
-                <td>Entradas, salidas, modulos compartidos, invariantes, criterios de calidad</td>
-                <td>Mezclar limpieza con cambios de comportamiento ocultos</td>
+                <td>Cross-cutting restructure</td>
+                <td>Inputs, outputs, shared modules, invariants, quality criteria</td>
+                <td>Mix cleanup with hidden behavior changes</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div class="callout">
-          <strong>Heuristica util:</strong>
-          si una conclusion aparece solo en una fuente secundaria, es una pista.
-          Si aparece en el artefacto vigente, sus pruebas, datos, configuracion
-          o documentacion autoritativa, puede entrar al anchor. Si no aparece en
-          ningun lado verificable, queda como pregunta abierta.
+          <strong>Useful heuristic:</strong>
+          if a conclusion appears only in a secondary source, it is a hint. If it
+          appears in the current artifact, its tests, data, configuration, or
+          authoritative documentation, it can enter the anchor. If it appears
+          nowhere verifiable, it remains an open question.
         </div>
       </div>
     </section>
 
     <section class="section" id="anchors">
       <div class="section-intro">
-        <p class="kicker">03 / Memoria</p>
-        <h2>Anchors antes de avanzar</h2>
+        <p class="kicker">03 / Memory</p>
+        <h2>Anchors before advance</h2>
         <p>
-          Un anchor evita que el LLM vuelva a razonar desde cero y reduce la
-          deriva entre secciones.
+          An anchor prevents the LLM from reasoning from scratch again and reduces
+          drift between sections.
         </p>
       </div>
 
@@ -601,121 +601,121 @@
         <div class="grid">
           <article class="card">
             <span class="status should">Observe</span>
-            <h3>Lee con limite</h3>
+            <h3>Read with limits</h3>
             <p>
-              Muestra artefactos representativos, puntos de entrada, contratos y
-              ejemplos reales. Anota que se leyo y que se salto intencionalmente.
+              Sample representative artifacts, entry points, contracts, and real
+              examples. Record what was read and what was intentionally skipped.
             </p>
           </article>
           <article class="card">
             <span class="status should">Compress</span>
-            <h3>Resume como estado</h3>
+            <h3>Compress into state</h3>
             <p>
-              Convierte lectura en invariantes, dependencias, riesgos,
-              contradicciones y preguntas abiertas.
+              Turn reading into invariants, dependencies, risks, contradictions,
+              and open questions.
             </p>
           </article>
           <article class="card">
             <span class="status should">Consolidate</span>
-            <h3>Busca conflicto</h3>
+            <h3>Look for conflict</h3>
             <p>
-              Compara contra anchors previos. Un conflicto critico detiene el
-              trabajo hasta resolverse.
+              Compare against previous anchors. A critical conflict stops the work
+              until it is resolved.
             </p>
           </article>
           <article class="card">
             <span class="status should">Advance</span>
-            <h3>Avanza con memoria</h3>
+            <h3>Advance with memory</h3>
             <p>
-              La siguiente seccion usa el anchor, no una intuicion nueva ni un
-              recuerdo borroso.
+              The next section uses the anchor, not a new intuition or a vague
+              memory.
             </p>
           </article>
         </div>
 
         <div class="template">
           <pre><code>ANCHOR[section-name]:
-  summary: "2 a 4 lineas sobre lo observado"
+  summary: "2 to 4 lines about what was observed"
 
   invariants:
-    - text: "propiedad que debe preservarse"
+    - text: "property that must be preserved"
       priority: critical | important | soft
 
   dependencies:
-    - "fuente -> consumidor"
+    - "source -> consumer"
 
   risks:
-    - text: "riesgo concreto"
+    - text: "specific risk"
       priority: critical | important | soft
       severity: low | med | high
 
   contradictions:
     - against: "ANCHOR[previous-section]"
-      text: "hallazgo previo vs hallazgo actual"
+      text: "previous finding vs current finding"
       priority: critical | important | soft
-    # o: none
+    # or: none
 
   open_questions:
-    - "pregunta que aun importa"
-    # o: none
+    - "question that still matters"
+    # or: none
 
-  sources_sampled: ["fuentes verificadas"]
-  sources_skipped_intentionally: ["fuentes o patrones"]</code></pre>
+  sources_sampled: ["verified sources"]
+  sources_skipped_intentionally: ["sources or patterns"]</code></pre>
         </div>
       </div>
     </section>
 
     <section class="section" id="impacto">
       <div class="section-intro">
-        <p class="kicker">04 / Impacto</p>
-        <h2>Mapa antes de intervenir</h2>
+        <p class="kicker">04 / Impact</p>
+        <h2>Map before intervening</h2>
         <p>
-          El IMPACT_MAP es el semaforo. Si contiene unknowns, se lee mas, se
-          pregunta o se detiene.
+          The IMPACT_MAP is the traffic light. If it contains unknowns, read more,
+          ask, or stop.
         </p>
       </div>
 
       <div class="stack">
         <div class="template">
-          <span class="status must">Bloqueante</span>
+          <span class="status must">Blocking</span>
           <pre><code>IMPACT_MAP:
-  change_summary: "que se va a cambiar"
+  change_summary: "what will change"
   direct:
-    - "artefacto / modulo / contrato directamente editado"
+    - "artifact / module / contract directly edited"
   indirect:
-    - "comportamiento afectado por dependencia"
+    - "behavior affected through dependency"
   unknown:
-    - "area sospechada pero no confirmada"
+    - "suspected but unconfirmed area"
   affected_invariants:
-    - text: "invariante afectado"
+    - text: "affected invariant"
       priority: critical | important | soft
       from_anchor: "ANCHOR[section-name]"
-  minimal_modification_justification: "por que este cambio es suficiente"</code></pre>
+  minimal_modification_justification: "why this change is enough"</code></pre>
         </div>
 
         <div class="grid">
           <article class="card">
             <span class="status verify">Direct</span>
-            <h3>Lo que vas a intervenir</h3>
+            <h3>What you will intervene on</h3>
             <p>
-              Archivos, documentos, datasets, contratos, componentes, funciones
-              o procesos que recibiran el cambio.
+              Files, documents, datasets, contracts, components, functions, or
+              processes that will receive the change.
             </p>
           </article>
           <article class="card">
             <span class="status verify">Indirect</span>
-            <h3>Lo que puede cambiar por dependencia</h3>
+            <h3>What can change by dependency</h3>
             <p>
-              Consumidores, flujos, estilos, metricas, rutas, pruebas o decisiones
-              tocadas por el efecto.
+              Consumers, flows, styles, metrics, routes, tests, or decisions
+              touched by the effect.
             </p>
           </article>
           <article class="card">
             <span class="status must">Unknown</span>
-            <h3>Lo que bloquea</h3>
+            <h3>What blocks</h3>
             <p>
-              Cualquier zona relevante que no puedas clasificar. Unknown no es
-              una nota: es un stop.
+              Any relevant area you cannot classify. Unknown is not a note: it is
+              a stop.
             </p>
           </article>
         </div>
@@ -724,56 +724,55 @@
 
     <section class="section" id="modificar">
       <div class="section-intro">
-        <p class="kicker">05 / Intervencion</p>
-        <h2>Intervenir sin drift</h2>
+        <p class="kicker">05 / Intervention</p>
+        <h2>Intervene without drift</h2>
         <p>
-          La modificacion correcta es la menor que satisface la tarea y respeta
-          los anchors consolidados.
+          The correct modification is the smallest one that satisfies the task and
+          respects the consolidated anchors.
         </p>
       </div>
 
       <div class="stack">
         <div class="grid">
           <article class="card">
-            <h3>Preserva contratos</h3>
+            <h3>Preserve contracts</h3>
             <p>
-              No cambies firmas, schemas, rutas, permisos, definiciones, metricas
-              o semantica publica como efecto secundario. Si debes hacerlo,
-              declaralo como cambio directo.
+              Do not change signatures, schemas, routes, permissions, definitions,
+              metrics, or public semantics as a side effect. If you must, declare
+              it as a direct change.
             </p>
           </article>
           <article class="card">
-            <h3>Respeta el patron local</h3>
+            <h3>Respect the local pattern</h3>
             <p>
-              Usa patrones existentes del sistema, documento, dataset o equipo
-              antes de inventar abstracciones. La coherencia vale mas que una
-              solucion novedosa.
+              Use existing patterns from the system, document, dataset, or team
+              before inventing abstractions. Coherence is worth more than novelty.
             </p>
           </article>
           <article class="card">
-            <h3>No tapes incertidumbre</h3>
+            <h3>Do not hide uncertainty</h3>
             <p>
-              Si aparece una dependencia inesperada durante la intervencion,
-              pausa y actualiza el mapa. No sigas actuando con impacto borroso.
+              If an unexpected dependency appears during intervention, pause and
+              update the map. Do not keep acting with blurry impact.
             </p>
           </article>
           <article class="card">
-            <h3>Separa refactor y comportamiento</h3>
+            <h3>Separate refactor and behavior</h3>
             <p>
-              Cuando sea posible, evita mezclar limpieza estructural con cambio
-              de significado. Si se mezclan, explica por que era necesario.
+              When possible, avoid mixing structural cleanup with changes in
+              meaning. If they mix, explain why it was necessary.
             </p>
           </article>
         </div>
 
         <div class="checklist">
-          <h3>Checklist de cierre operativo</h3>
+          <h3>Operational close checklist</h3>
           <ol>
-            <li>El cambio corresponde al scope declarado.</li>
-            <li>No hay unknowns pendientes en el IMPACT_MAP.</li>
-            <li>Los invariantes criticos siguen intactos.</li>
-            <li>Las dependencias siguen en la misma direccion.</li>
-            <li>La solucion no agrega complejidad sin beneficio claro.</li>
+            <li>The change matches the declared scope.</li>
+            <li>No unknowns remain in the IMPACT_MAP.</li>
+            <li>Critical invariants remain intact.</li>
+            <li>Dependencies still point in the same direction.</li>
+            <li>The solution adds no complexity without a clear benefit.</li>
           </ol>
         </div>
       </div>
@@ -781,11 +780,11 @@
 
     <section class="section" id="verificar">
       <div class="section-intro">
-        <p class="kicker">06 / Verificacion</p>
-        <h2>Cierre verificable</h2>
+        <p class="kicker">06 / Verification</p>
+        <h2>Verifiable close</h2>
         <p>
-          Un LLM termina cuando puede decir que verifico, que no pudo verificar
-          y que riesgos quedan.
+          An LLM is done when it can state what it verified, what it could not
+          verify, and what risks remain.
         </p>
       </div>
 
@@ -794,60 +793,60 @@
           <table>
             <thead>
               <tr>
-                <th>Tipo de cambio</th>
-                <th>Verificacion minima</th>
-                <th>Reporta si falta</th>
+                <th>Change type</th>
+                <th>Minimum verification</th>
+                <th>Report if missing</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Documento o pagina estatica</td>
-                <td>Inspeccion de estructura, render o lectura completa, enlaces internos</td>
-                <td>Sin navegador, visor o validador disponible</td>
+                <td>Document or static page</td>
+                <td>Structure inspection, render or full read-through, internal links</td>
+                <td>No browser, viewer, or validator available</td>
               </tr>
               <tr>
-                <td>Aplicacion o automatizacion</td>
-                <td>Lint, typecheck, pruebas relevantes, ejecucion local si aplica</td>
-                <td>Dependencias no instaladas, entorno bloqueado o credenciales ausentes</td>
+                <td>Application or automation</td>
+                <td>Lint, typecheck, relevant tests, local run if applicable</td>
+                <td>Dependencies not installed, blocked environment, or missing credentials</td>
               </tr>
               <tr>
-                <td>Contrato, API o integracion</td>
-                <td>Entrada/salida esperada, consumidores, errores, compatibilidad</td>
-                <td>Servicios externos no disponibles</td>
+                <td>Contract, API, or integration</td>
+                <td>Expected input/output, consumers, errors, compatibility</td>
+                <td>External services unavailable</td>
               </tr>
               <tr>
-                <td>Datos, modelos o reglas de negocio</td>
-                <td>Muestra verificable, rollback, compatibilidad con la fuente actual</td>
-                <td>Fuente de datos inaccesible o muestra insuficiente</td>
+                <td>Data, models, or business rules</td>
+                <td>Verifiable sample, rollback, compatibility with current source</td>
+                <td>Data source inaccessible or insufficient sample</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div class="template">
-          <span class="status verify">Respuesta final</span>
+          <span class="status verify">Final response</span>
           <pre><code>Critical findings:
-  - none | hallazgos criticos
+  - none | critical findings
 
 Important findings:
-  - riesgos o decisiones importantes
+  - important risks or decisions
 
 Changes made:
-  - artifact: cambio concreto
+  - artifact: concrete change
 
 Verification:
-  - comando o revision ejecutada
-  - limitacion si algo no pudo correrse
+  - command or review performed
+  - limitation if something could not run
 
 Recommended next actions:
-  - accion corta y concreta</code></pre>
+  - short concrete action</code></pre>
         </div>
       </div>
     </section>
 
     <footer class="footer">
-      <span>CTP v1.0: orientacion, anchors, impacto, intervencion, verificacion.</span>
-      <span>Fuente operativa: artefactos, datos e instrucciones vigentes.</span>
+      <span>CTP v1.0: orientation, anchors, impact, intervention, verification.</span>
+      <span>Operational source: current artifacts, data, and instructions.</span>
     </footer>
   </main>
 </body>
