@@ -1,14 +1,22 @@
-# Cognitive Traversal Protocol v1.0
+# Cognitive Traversal Protocol — Layer 1 Specification
 
-CTP is a context-first protocol for LLM-assisted intervention.
+> Version: 0.4.0
+> Scope: session-local discipline (TRIAGE, ANCHOR, IMPACT_MAP, verification)
+> Companion: [`knowledge-layer.md`](knowledge-layer.md) — Layer 2 specification
 
-Its goal is simple: make the agent understand just enough, preserve what matters, declare impact, change minimally, and verify honestly.
+CTP is a two-layer, context-first protocol for LLM-assisted intervention.
+
+This document specifies **Layer 1** — the discipline that runs inside a single agent session: understand just enough, preserve what matters, declare impact, change minimally, and verify honestly.
+
+Layer 2 — the persistent knowledge substrate that provides cross-session memory and mechanical anti-drift — is specified in [`knowledge-layer.md`](knowledge-layer.md). The two layers are complementary; Layer 1 alone is sufficient for one-off tasks, both are required for sustained work on real codebases.
 
 ## Principles
 
 ### 1. The Current Source Wins
 
 External references can orient the agent, but they do not prove current behavior.
+
+Precedence is operational: **`code > spec > knowledge layer`**. The knowledge layer (Layer 2) and any other external reference is **navigation, not authority**. See [`knowledge-layer.md`](knowledge-layer.md) for the full Pattern A vs Pattern B distinction.
 
 Examples of current sources:
 
@@ -245,3 +253,13 @@ Recommended next actions:
 - Hiding behavior changes inside refactors
 - Reporting verification that was not performed
 - Creating abstractions that do not reduce real complexity
+- Using the Layer 2 knowledge layer as authority instead of navigation (see [`knowledge-layer.md`](knowledge-layer.md) Pattern B)
+- Auto-updating the knowledge layer from agent edits without explicit human authorization
+
+## Layer 2 — Where To Go Next
+
+This document covers Layer 1 only. For sustained work on a real codebase, also read:
+
+- [`knowledge-layer.md`](knowledge-layer.md) — full normative spec for the persistent knowledge layer, including the external-by-design architecture, the Obsidian + MCP canonical implementation, the typed YAML schema, the `linked_code_entities` mechanical anti-drift mechanism, and the precedence/update rules.
+
+Layer 1 prevents drift inside a session. Layer 2 prevents drift between sessions. Both layers are part of the protocol.

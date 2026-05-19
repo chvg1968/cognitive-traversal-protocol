@@ -2,6 +2,35 @@
 
 All notable changes to the Cognitive Traversal Protocol will be documented here.
 
+## [0.4.0] - 2026-05-19
+
+Architectural reframing. CTP is now explicitly presented as a two-layer protocol, not a session-local prompt discipline. The persistent knowledge layer is lifted from "optional extension" to "inherent part of the protocol" — the previous framing oversold what Layer 1 alone delivers.
+
+Changed
+- README restructured around the two-layer architecture. New "Architecture: two layers" section makes explicit that Layer 1 (session-local discipline: TRIAGE, ANCHOR, IMPACT_MAP, unknown-blocking) and Layer 2 (persistent knowledge substrate) are both part of CTP. Layer 1 alone is enough for one-off tasks; sustained work on real codebases requires Layer 2.
+- "Why CTP exists" failure-mode table extended to include cross-session drift and documentation drift, both intercepted by Layer 2.
+- Quick start section renamed "Quick start (Layer 1)" to set the right expectation. The pasted prompt is the on-ramp, not the full protocol.
+- Templates section renamed "Layer 1 templates" for the same reason.
+- "When to use, when NOT to use" rewritten to distinguish single-layer use (one-off tasks) from full two-layer use (sustained work).
+- Documentation list extended with the new Layer 2 spec.
+- Contributing reordered: real-world traces first, then A/B case studies, Layer 2 reference implementations, `linked_code_entities` verifiers, failure cases, tool adapters, translations.
+- protocol.md retitled "Layer 1 Specification" with scope clarified at the top. References Layer 2 explicitly via the new knowledge-layer.md document.
+
+Added
+- docs/knowledge-layer.md: full normative specification of Layer 2. Covers the external-by-design architecture, the Obsidian + MCP canonical implementation, Pattern A (navigation, recommended) vs Pattern B (authority, anti-pattern), the typed YAML schema with `relations`, `linked_code_entities`, and `semantic_constraints`, the `linked_code_entities` mechanical anti-drift verifier (specified; reference implementation pending), the precedence rules (`code > spec > knowledge layer`), and the update flow with human-in-the-loop authorization.
+- New limit (#4): "Layer 1 without Layer 2 is incomplete" — explicit acknowledgement that session-local discipline alone does not prevent cross-session drift or mechanically verify documentation against code.
+- New limit (#5): "Layer 2 requires investment" — honest about the setup cost.
+- New validation-status row: "Layer 2 in production" (informally used; MCP exposure not yet wired) and "`linked_code_entities` verifier" (schema designed, script pending).
+- protocol.md anti-pattern: "Using Layer 2 as authority instead of navigation".
+- protocol.md anti-pattern: "Auto-updating the knowledge layer without explicit human authorization".
+
+Preserved
+- All Layer 1 mechanics (TRIAGE, ANCHOR, IMPACT_MAP, unknown-blocking, priorities) unchanged.
+- Origin section unchanged.
+- Limits and validation framework unchanged in structure, only extended.
+- The human-in-the-loop rule for the knowledge layer: the agent reports drift, it does not auto-correct.
+- Precedence rule (`code > spec > knowledge layer`) is now stated explicitly in both protocol.md and knowledge-layer.md.
+
 ## [0.3.0] - 2026-05-17
 
 README reorganization and honest scoping. Version downgraded from 1.0.0 to 0.3.0 to reflect "early draft" status more accurately while empirical validation is pending.
