@@ -2,6 +2,28 @@
 
 All notable changes to the Cognitive Traversal Protocol will be documented here.
 
+## [0.5.0] - 2026-05-27
+
+Socratic extension. The protocol gains an élenchos sub-step and a maieutic phrasing rule. Both are minimal additions, not a rewrite — they formalize practices that were implicitly desirable but not enforced under 0.4.0.
+
+Changed
+- Section Model: from four sub-steps to five. New step 3 "Challenge (élenchos)" forces the agent to actively seek refutations of the tentative invariants before sealing them. The previous step 3 "Consolidate" becomes step 4; "Advance" becomes step 5.
+- Anchor Format: new `elenchic_challenge` block (`attempted_refutation`, `result`, `notes`) records the refutation attempt. Sits between `summary` and `invariants` so that what gets sealed is the post-challenge invariant list, not the original.
+- "Anchors Are Working Memory" contents list now includes "Elenchic challenge (refutation attempt and result)".
+- "Unknown Impact Blocks Action": "Asks a targeted question" replaced with "Asks a maieutic question — phrased to surface the user's implicit invariants, not to extract a binary decision".
+
+Rationale
+- CTP 0.4.0 already operationalized *docta ignorantia* through the `unknown` bucket of IMPACT_MAP — élenchos applied to the impact analysis. It did not apply élenchos to invariants themselves: anchors could be sealed comfortably without any refutation attempt. The new sub-step closes that gap and hardens anchors against confirmation bias under tight reading budgets.
+- CTP 0.4.0 already required asking the user when reading alone could not resolve `unknown`. It did not specify *how* to ask. Binary questions extract decisions; maieutic questions extract tacit invariants. The latter is what is actually scarce when human knowledge is the missing input.
+
+Preserved
+- All existing fields, sub-steps, and semantics. Anchors emitted under 0.4.0 remain valid; the new field is additive and the renumbered sub-steps preserve order.
+- Priority system, IMPACT_MAP semantics, `unknown`-blocking rule, precedence rule (`code > spec > knowledge layer`), Layer 2 architecture — all unchanged.
+- The "trust code over external references" rule, the human-in-the-loop authorization for the knowledge layer, and the limits/validation framework.
+
+Versioning
+- Minor bump (0.4.0 → 0.5.0). Backward-compatible additive change. README, protocol.md, and knowledge-layer.md bumped in lockstep, following the convention established in 0.4.0.
+
 ## [0.4.0] - 2026-05-19
 
 Architectural reframing. CTP is now explicitly presented as a two-layer protocol, not a session-local prompt discipline. The persistent knowledge layer is lifted from "optional extension" to "inherent part of the protocol" — the previous framing oversold what Layer 1 alone delivers.

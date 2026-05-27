@@ -1,7 +1,7 @@
 # The Persistent Knowledge Layer
 
 > Status: **normative — part of CTP architecture**
-> Version: 0.4.0
+> Version: 0.5.0
 > Layer: 2 of 2 (see [README](../README.md) for the two-layer overview)
 
 This document specifies Layer 2 of CTP — the persistent knowledge substrate that provides cross-session memory, mechanical anti-drift verification, and structural navigation.

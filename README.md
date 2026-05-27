@@ -1,7 +1,7 @@
 # Cognitive Traversal Protocol (CTP)
 
 > Status: **early draft** — gathering community feedback and empirical validation
-> Version: **0.4.0**
+> Version: **0.5.0**
 > Scope: LLM-assisted work across code, documents, data, prompts, automations, and operational processes
 
 CTP is an operating protocol that forces an LLM (or an agentic tool) to **declare what it knows, what it does not know, and what will change — before it changes anything.**

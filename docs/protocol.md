@@ -1,6 +1,6 @@
 # Cognitive Traversal Protocol — Layer 1 Specification
 
-> Version: 0.4.0
+> Version: 0.5.0
 > Scope: session-local discipline (TRIAGE, ANCHOR, IMPACT_MAP, verification)
 > Companion: [`knowledge-layer.md`](knowledge-layer.md) — Layer 2 specification
 
@@ -34,7 +34,7 @@ If the agent suspects an affected area but cannot classify it as direct or indir
 The agent can continue only after it:
 
 - Reads more evidence
-- Asks a targeted question
+- Asks a maieutic question — phrased to surface the user's implicit invariants (tacit criteria, analogous cases, constraints that live only in their head), not to extract a binary decision
 - Narrows the change
 - Or reports that the task is blocked
 
@@ -45,6 +45,7 @@ An anchor compresses evidence into reusable state. It prevents the agent from re
 Every anchor should include:
 
 - Summary
+- Elenchic challenge (refutation attempt and result)
 - Invariants
 - Dependencies
 - Risks
@@ -126,12 +127,13 @@ CTP does not reward reading everything. It rewards reading the minimum needed to
 
 ## Section Model
 
-Each section of a traversal runs four sub-steps in order:
+Each section of a traversal runs five sub-steps in order:
 
 1. **Observe** — read only what is needed to characterize the section.
-2. **Compress** — turn reading into an anchor: invariants, dependencies, risks, contradictions, open questions.
-3. **Consolidate** — cross-check against prior anchors. A critical conflict stops the work until resolved.
-4. **Advance** — proceed to the next section using the anchor, not a re-derived intuition.
+2. **Compress** — turn reading into a tentative anchor: tentative invariants, dependencies, risks, contradictions, open questions.
+3. **Challenge (élenchos)** — actively search for refutations of the tentative invariants before sealing them. Record the attempt in `elenchic_challenge` (see Anchor Format). If a refutation succeeds, revise the invariants; the sealed anchor records the revised list, not the original. The challenge is the agent's safeguard against premature confirmation.
+4. **Consolidate** — cross-check against prior anchors. A critical conflict stops the work until resolved.
+5. **Advance** — proceed to the next section using the anchor, not a re-derived intuition.
 
 ## Anchor Format
 
@@ -139,8 +141,13 @@ Each section of a traversal runs four sub-steps in order:
 ANCHOR[section-name]:
   summary: "2 to 4 lines about what was observed"
 
+  elenchic_challenge:
+    attempted_refutation: "what observation, file, or test you actively sought to disprove the tentative invariants"
+    result: refuted | survived | inconclusive
+    notes: "optional; if refuted, how the invariants were revised; if inconclusive, what remains open"
+
   invariants:
-    - text: "property that must be preserved"
+    - text: "property that must be preserved (hardened by the challenge)"
       priority: critical | important | soft
 
   dependencies:
